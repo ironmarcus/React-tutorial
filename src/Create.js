@@ -1,10 +1,19 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+//import { useHistory } from "react-router-dom"; deprecated
 
 const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('mario');
     const [isPending, setIsPending] = useState(false);//This is set to false since we did not submit the form
+
+    //const history = useNavigate();
+
+    // Redirect to a specific route
+    const handleRedirect = () => {
+        navigate('/');
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,6 +29,8 @@ const Create = () => {
         }).then(() =>{
             console.log('new blog added');
             setIsPending(false);
+            //history.go(-1);
+            //handleRedirect;
         })
     }
 
